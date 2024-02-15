@@ -27,12 +27,12 @@ const Spinner = ({ name, options }) => {
         () =>
           `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(
             Math.random() * 256
-          )}, ${Math.floor(Math.random() * 256)}, 0.6)`
+          )}, ${Math.floor(Math.random() * 256)}, 1)`
       );
 
       const ctx = chartRef.current.getContext("2d");
       chartInstance = new Chart(ctx, {
-        type: "pie",
+        type: "doughnut",
         data: {
           labels,
           datasets: [
@@ -73,11 +73,17 @@ const Spinner = ({ name, options }) => {
         {" "}
         <p className="font-bold text-sm text-white">Spin the wheel, {name}</p>
       </button>
-      <div className="mt-4">
-        <canvas ref={chartRef} />
+      <div className="hidden lg:flex mt-4">
+        <canvas ref={chartRef} width="360" height="360" />
       </div>
       <p className="font-bold text-sm text-white mt-4">
-        {results.length > 0 && results.map((result) => result)}
+        {results.length > 0 &&
+          results.map((result, index) => (
+            <span key={index}>
+              {result}
+              {index !== results.length - 1 && ", "}
+            </span>
+          ))}
       </p>
     </main>
   );

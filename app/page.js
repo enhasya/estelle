@@ -54,7 +54,30 @@ export default function Home() {
           ],
         };
       case 2:
-        return <p>Spin the wheel to get a random color</p>;
+        return {
+          section: ["How much power you have?"],
+          options: [
+            "Powerless",
+            "Limited Power",
+            "Beginner Level",
+            "Novice Level",
+            "Basic Power",
+            "Moderate Power",
+            "Average Power",
+            "Above Average Power",
+            "Intermediate Level",
+            "Skilled Power",
+            "Advanced Level",
+            "Strong Power",
+            "Exceptional Power",
+            "Master Level",
+            "High Power",
+            "Elite Level",
+            "Legendary Level",
+            "Transcendent Level",
+            "Divine Level",
+          ],
+        };
       case 3:
         return <p>Spin the wheel to get a random animal</p>;
       default:
@@ -63,7 +86,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex flex-col w-full h-screen items-center justify-center p-8 lg:p-16">
+    <main className="flex flex-col w-full h-screen items-center justify-center p-8">
       <div className="flex flex-col w-full h-auto items-center justify-center">
         <p className="font-bold text-lg text-white">Estelle</p>
         <p className="font-medium text-sm text-white/60">
