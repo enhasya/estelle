@@ -17,15 +17,15 @@ const Spinner = ({ name, options }) => {
   };
 
   return (
-    <main>
-      <p className="font-bold text-sm text-white">Hi, {name}</p>
+    <main className="flex flex-col w-full items-center">
       <div className={`wheel ${spinning ? "spin" : ""}`} />
       <button
         onClick={spinWheel}
         disabled={spinning}
-        className="font-bold text-sm text-white"
+        className="bg-white/5 transition-all hover:bg-white/10 flex flex-row gap-4 items-center justify-center w-full lg:w-64 p-4 rounded-lg mt-4"
       >
-        Spin the wheel
+        {" "}
+        <p className="font-bold text-sm text-white">Spin the wheel, {name}</p>
       </button>
       <p className="font-bold text-sm text-white">
         {results.length > 0 &&
