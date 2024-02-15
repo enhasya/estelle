@@ -21,35 +21,38 @@ export default function Home() {
   const choice = (spinNumber) => {
     switch (spinNumber) {
       case 1:
-        return [
-          "Peasant",
-          "Goblin",
-          "Kobold",
-          "Imp",
-          "Zombie",
-          "Skeleton",
-          "Ghoul",
-          "Specter",
-          "Wraith",
-          "Demonling",
-          "Lesser Demon",
-          "Elemental Sprout",
-          "Young Dragon",
-          "Harpy",
-          "Ogre",
-          "Troll",
-          "Vampire Spawn",
-          "Werewolf",
-          "Gorgon",
-          "Giant",
-          "Vampire",
-          "Lich",
-          "Dragon",
-          "Archdemon",
-          "Elder Dragon",
-          "Celestial Being",
-          "Primordial Entity",
-        ];
+        return {
+          section: ["What creature you are?"],
+          options: [
+            "Peasant",
+            "Goblin",
+            "Kobold",
+            "Imp",
+            "Zombie",
+            "Skeleton",
+            "Ghoul",
+            "Specter",
+            "Wraith",
+            "Demonling",
+            "Lesser Demon",
+            "Elemental Sprout",
+            "Young Dragon",
+            "Harpy",
+            "Ogre",
+            "Troll",
+            "Vampire Spawn",
+            "Werewolf",
+            "Gorgon",
+            "Giant",
+            "Vampire",
+            "Lich",
+            "Dragon",
+            "Archdemon",
+            "Elder Dragon",
+            "Celestial Being",
+            "Primordial Entity",
+          ],
+        };
       case 2:
         return <p>Spin the wheel to get a random color</p>;
       case 3:
@@ -81,12 +84,19 @@ export default function Home() {
           </div>
           <button
             onClick={handleNextSpinner}
-            className="bg-white/5 transition-all hover:bg-white/10 flex flex-row gap-4 items-center justify-center w-full lg:w-auto p-4 rounded-lg mt-4"
+            className="bg-white/5 transition-all hover:bg-white/10 flex flex-row gap-4 items-center justify-center w-auto p-4 rounded-lg mt-4"
           >
             <p className="font-bold text-sm text-white">Next</p>
           </button>
         </div>
-        {name && <Spinner name={name} options={choice(spinNumber)} />}
+        {name && (
+          <>
+            <p className="font-bold text-sm text-white">
+              {choice(spinNumber).section}
+            </p>
+            <Spinner name={name} options={choice(spinNumber).options} />
+          </>
+        )}
       </div>
       <div className="flex flex-col lg:flex-row w-full h-auto items-center justify-between">
         <p className="font-bold text-sm text-white/60">@enhasya</p>
