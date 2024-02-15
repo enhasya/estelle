@@ -22,12 +22,11 @@ const Spinner = ({ name, options }) => {
       }, {});
       const labels = Object.keys(optionCounts);
       const data = Object.values(optionCounts);
-      const backgroundColors = Array.from(
-        { length: labels.length },
-        () =>
-          `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(
-            Math.random() * 256
-          )}, ${Math.floor(Math.random() * 256)}, 1)`
+      const backgroundColors = data.map(
+        (_, index) =>
+          `rgba(${Math.floor((255 / labels.length) * index)}, ${Math.floor(
+            (255 / labels.length) * index
+          )}, ${Math.floor((255 / labels.length) * index)}, 0.6)`
       );
 
       const ctx = chartRef.current.getContext("2d");
