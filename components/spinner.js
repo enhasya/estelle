@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 const Spinner = ({ name, options }) => {
   const [spinning, setSpinning] = useState(false);
-  const [results, setResults] = useState({});
+  const [results, setResults] = useState([]);
 
   const spinWheel = () => {
     setSpinning(true);
@@ -18,18 +18,23 @@ const Spinner = ({ name, options }) => {
 
   return (
     <main>
-      <p>Hi, {name}</p>
+      <p className="font-bold text-sm text-white">Hi, {name}</p>
       <div className={`wheel ${spinning ? "spin" : ""}`} />
-      <button onClick={spinWheel} disabled={spinning}>
+      <button
+        onClick={spinWheel}
+        disabled={spinning}
+        className="font-bold text-sm text-white"
+      >
         Spin the wheel
       </button>
-      <div>
-        {results.map((result, index) => (
-          <p key={index}>
-            Spin {index + 1}:{result}
-          </p>
-        ))}
-      </div>
+      <p className="font-bold text-sm text-white">
+        {results.length > 0 &&
+          results.map((result, index) => (
+            <p key={index}>
+              Spin {index + 1}:{result}
+            </p>
+          ))}
+      </p>
     </main>
   );
 };
