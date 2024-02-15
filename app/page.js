@@ -90,12 +90,12 @@ export default function Home() {
           </button>
         </div>
         {name && (
-          <>
+          <div className="mt-4 text-center">
             <p className="font-bold text-sm text-white">
               {choice(spinNumber).section}
             </p>
             <Spinner name={name} options={choice(spinNumber).options} />
-          </>
+          </div>
         )}
       </div>
       <div className="flex flex-col lg:flex-row w-full h-auto items-center justify-between">

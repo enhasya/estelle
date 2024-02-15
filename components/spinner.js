@@ -1,10 +1,56 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import Chart from "chart.js/auto";
 
 const Spinner = ({ name, options }) => {
   const [spinning, setSpinning] = useState(false);
   const [results, setResults] = useState([]);
+  const chartRef = useRef(null);
+
+  useEffect(() => {
+    let chartInstance = null;
+
+    if (!spinning) {
+      if (chartInstance) {
+        chartInstance.destroy();
+      }
+
+      const optionCounts = options.reduce((acc, option) => {
+        acc[option] = (acc[option] || 0) + 1;
+        return acc;
+      }, {});
+      const labels = Object.keys(optionCounts);
+      const data = Object.values(optionCounts);
+      const backgroundColors = Array.from(
+        { length: labels.length },
+        () =>
+          `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(
+            Math.random() * 256
+          )}, ${Math.floor(Math.random() * 256)}, 0.6)`
+      );
+
+      const ctx = chartRef.current.getContext("2d");
+      chartInstance = new Chart(ctx, {
+        type: "pie",
+        data: {
+          labels,
+          datasets: [
+            {
+              data,
+              backgroundColor: backgroundColors,
+            },
+          ],
+        },
+      });
+    }
+
+    return () => {
+      if (chartInstance) {
+        chartInstance.destroy();
+      }
+    };
+  }, [options, spinning]);
 
   const spinWheel = () => {
     setSpinning(true);
@@ -27,13 +73,11 @@ const Spinner = ({ name, options }) => {
         {" "}
         <p className="font-bold text-sm text-white">Spin the wheel, {name}</p>
       </button>
+      <div className="mt-4">
+        <canvas ref={chartRef} />
+      </div>
       <p className="font-bold text-sm text-white mt-4">
-        {results.length > 0 &&
-          results.map((result, index) => (
-            <p key={index}>
-              Spin {index + 1}:{result}
-            </p>
-          ))}
+        {results.length > 0 && results.map((result) => result)}
       </p>
     </main>
   );
