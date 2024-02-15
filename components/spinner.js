@@ -22,12 +22,12 @@ const Spinner = ({ name, options }) => {
       <button
         onClick={spinWheel}
         disabled={spinning}
-        className="bg-white/5 transition-all hover:bg-white/10 flex flex-row gap-4 items-center justify-center w-full lg:w-64 p-4 rounded-lg mt-4"
+        className="bg-white/5 transition-all hover:bg-white/10 flex flex-row gap-4 items-center justify-center w-full lg:w-auto p-4 rounded-lg mt-4"
       >
         {" "}
         <p className="font-bold text-sm text-white">Spin the wheel, {name}</p>
       </button>
-      <p className="font-bold text-sm text-white">
+      <p className="font-bold text-sm text-white mt-4">
         {results.length > 0 &&
           results.map((result, index) => (
             <p key={index}>

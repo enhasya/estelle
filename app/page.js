@@ -68,20 +68,25 @@ export default function Home() {
         </p>
       </div>
       <div className="flex flex-col w-full h-full items-center justify-center">
-        <div className="bg-white/5 flex flex-row gap-4 items-center justify-center w-full lg:w-80 p-4 rounded-lg mt-4">
-          <Image src={Name} width="16" height="16" />
-          <input
-            onChange={handleName}
-            className="bg-transparent text-white w-full font-medium text-sm outline-none"
-            type="text"
-            value={name}
-            placeholder="Enter your name"
-          />
+        <div className="flex flex-row gap-4 w-full h-auto items-center justify-center">
+          <div className="bg-white/5 flex flex-row gap-4 items-center justify-center w-full lg:w-80 p-4 rounded-lg mt-4">
+            <Image src={Name} width="16" height="16" />
+            <input
+              onChange={handleName}
+              className="bg-transparent text-white w-full font-medium text-sm outline-none"
+              type="text"
+              value={name}
+              placeholder="Enter your name"
+            />
+          </div>
+          <button
+            onClick={handleNextSpinner}
+            className="bg-white/5 transition-all hover:bg-white/10 flex flex-row gap-4 items-center justify-center w-full lg:w-auto p-4 rounded-lg mt-4"
+          >
+            <p className="font-bold text-sm text-white">Next</p>
+          </button>
         </div>
         {name && <Spinner name={name} options={choice(spinNumber)} />}
-        <button onClick={handleNextSpinner}>
-          <p className="font-bold text-sm text-white">Next</p>
-        </button>
       </div>
       <div className="flex flex-col lg:flex-row w-full h-auto items-center justify-between">
         <p className="font-bold text-sm text-white/60">@enhasya</p>
