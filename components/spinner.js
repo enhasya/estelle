@@ -41,6 +41,13 @@ const Spinner = ({ name, options }) => {
             },
           ],
         },
+        options: {
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
       });
     }
 

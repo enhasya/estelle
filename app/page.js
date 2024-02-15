@@ -122,8 +122,8 @@ export default function Home() {
         )}
       </div>
       <div className="flex flex-col lg:flex-row w-full h-auto items-center justify-between">
-        <p className="font-bold text-sm text-white/60">@enhasya</p>
-        <p className="font-bold text-sm text-white/60">2024</p>
+        <p className="font-medium text-sm text-white/60">@enhasya</p>
+        <p className="font-medium text-sm text-white/60">2024</p>
       </div>
     </main>
   );
