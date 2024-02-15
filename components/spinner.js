@@ -1,10 +1,12 @@
+"use client";
+
 import React, { useState } from "react";
 
-const Spinner = () => {
+const Spinner = ({ name, options }) => {
   const [spinning, setSpinning] = useState(false);
   const [results, setResults] = useState({});
 
-  const wheelSpin = () => {
+  const spinWheel = () => {
     setSpinning(true);
     setTimeout(() => {
       const randomIndex = Math.floor(Math.random() * options.length);
@@ -14,7 +16,22 @@ const Spinner = () => {
     }, 3000);
   };
 
-  return <div>Spinner</div>;
+  return (
+    <main>
+      <p>Hi, {name}</p>
+      <div className={`wheel ${spinning ? "spin" : ""}`} />
+      <button onClick={spinWheel} disabled={spinning}>
+        Spin the wheel
+      </button>
+      <div>
+        {results.map((result, index) => (
+          <p key={index}>
+            Spin {index + 1}:{result}
+          </p>
+        ))}
+      </div>
+    </main>
+  );
 };
 
 export default Spinner;
